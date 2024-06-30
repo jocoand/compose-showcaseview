@@ -9,7 +9,7 @@ plugins {
 android {
     namespace = "com.joco.compose_showcaseview"
     compileSdk = 34
-    version = "1.0.0"
+    version = findProperty("VERSION_NAME") as String
 
     defaultConfig {
         minSdk = 21
