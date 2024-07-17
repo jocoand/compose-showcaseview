@@ -127,53 +127,53 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
-                }
 
-                targets[KEY_GREETING]?.let { coordinates ->
-                    ShowcaseView(
-                        visible = visibleShowcase == VisibleShowcase.Greetings,
-                        targetCoordinates = coordinates,
-                    ) {
-                        MyShowcaseDialog(
-                            text = "Hey, this is Greetings showcase",
-                            onClick = { visibleShowcase = VisibleShowcase.None }
-                        )
+                    targets[KEY_GREETING]?.let { coordinates ->
+                        ShowcaseView(
+                            visible = visibleShowcase == VisibleShowcase.Greetings,
+                            targetCoordinates = coordinates,
+                        ) {
+                            MyShowcaseDialog(
+                                text = "Hey, this is Greetings showcase",
+                                onClick = { visibleShowcase = VisibleShowcase.None }
+                            )
+                        }
                     }
-                }
 
-                targets[KEY_ARTICLE]?.let { coordinates ->
-                    ShowcaseView(
-                        visible = visibleShowcase == VisibleShowcase.ArticleTitle,
-                        targetCoordinates = coordinates,
-                    ) {
-                        MyShowcaseDialog(
-                            text = "Yuhuu!\nYou can read awesome article here",
-                            onClick = { visibleShowcase = VisibleShowcase.None }
-                        )
+                    targets[KEY_ARTICLE]?.let { coordinates ->
+                        ShowcaseView(
+                            visible = visibleShowcase == VisibleShowcase.ArticleTitle,
+                            targetCoordinates = coordinates,
+                        ) {
+                            MyShowcaseDialog(
+                                text = "Yuhuu!\nYou can read awesome article here",
+                                onClick = { visibleShowcase = VisibleShowcase.None }
+                            )
+                        }
                     }
-                }
 
-                targets[KEY_LIKE]?.let { coordinates ->
-                    ShowcaseView(
-                        visible = visibleShowcase == VisibleShowcase.Like,
-                        targetCoordinates = coordinates,
-                    ) {
-                        MyShowcaseDialog(
-                            text = "Click to Like the article",
-                            onClick = { visibleShowcase = VisibleShowcase.None }
-                        )
+                    targets[KEY_LIKE]?.let { coordinates ->
+                        ShowcaseView(
+                            visible = visibleShowcase == VisibleShowcase.Like,
+                            targetCoordinates = coordinates,
+                        ) {
+                            MyShowcaseDialog(
+                                text = "Click to Like the article",
+                                onClick = { visibleShowcase = VisibleShowcase.None }
+                            )
+                        }
                     }
-                }
 
-                targets[KEY_SHARE]?.let { coordinates ->
-                    ShowcaseView(
-                        visible = visibleShowcase == VisibleShowcase.Share,
-                        targetCoordinates = coordinates,
-                    ) {
-                        MyShowcaseDialog(
-                            text = "Click to Share the article",
-                            onClick = { visibleShowcase = VisibleShowcase.None }
-                        )
+                    targets[KEY_SHARE]?.let { coordinates ->
+                        ShowcaseView(
+                            visible = visibleShowcase == VisibleShowcase.Share,
+                            targetCoordinates = coordinates,
+                        ) {
+                            MyShowcaseDialog(
+                                text = "Click to Share the article",
+                                onClick = { visibleShowcase = VisibleShowcase.None }
+                            )
+                        }
                     }
                 }
             }
