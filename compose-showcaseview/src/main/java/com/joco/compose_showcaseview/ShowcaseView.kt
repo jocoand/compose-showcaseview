@@ -47,14 +47,15 @@ fun ShowcaseView(
     targetCoordinates: LayoutCoordinates,
     position: ShowcasePosition = ShowcasePosition.Default,
     alignment: ShowcaseAlignment = ShowcaseAlignment.Default,
+    duration: ShowcaseDuration = ShowcaseDuration.Default,
     onDisplayStateChanged: (ShowcaseDisplayState) -> Unit = {},
     dialog: @Composable () -> Unit
 ) {
     val transition =  remember { MutableTransitionState(false) }
     AnimatedVisibility(
         visibleState = transition,
-        enter = fadeIn(tween(700)),
-        exit = fadeOut(tween(500))
+        enter = fadeIn(tween(duration.enterMillis)),
+        exit = fadeOut(tween(duration.exitMillis))
     ) {
         Box {
             ShowcaseBackground(targetCoordinates)
