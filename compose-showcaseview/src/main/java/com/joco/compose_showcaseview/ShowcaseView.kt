@@ -1,6 +1,7 @@
 package com.joco.compose_showcaseview
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
@@ -45,10 +47,12 @@ fun ShowcaseView(
     targetCoordinates: LayoutCoordinates,
     position: ShowcasePosition = ShowcasePosition.Default,
     alignment: ShowcaseAlignment = ShowcaseAlignment.Default,
+    onDisplayStateChanged: (ShowcaseDisplayState) -> Unit = {},
     dialog: @Composable () -> Unit
 ) {
+    val transition =  remember { MutableTransitionState(false) }
     AnimatedVisibility(
-        visible = visible,
+        visibleState = transition,
         enter = fadeIn(tween(700)),
         exit = fadeOut(tween(500))
     ) {
@@ -60,6 +64,18 @@ fun ShowcaseView(
                 alignment = alignment,
                 content = dialog
             )
+        }
+    }
+    LaunchedEffect(key1 = visible) {
+        transition.targetState = visible
+    }
+    LaunchedEffect(key1 = transition.isIdle) {
+        if (transition.isIdle) {
+            if (transition.targetState) {
+                onDisplayStateChanged(ShowcaseDisplayState.Appeared)
+            } else {
+                onDisplayStateChanged(ShowcaseDisplayState.Disappeared)
+            }
         }
     }
 }
