@@ -39,6 +39,8 @@ import androidx.compose.ui.unit.dp
  * @param targetCoordinates The coordinates of the target element that the Showcase is highlighting.
  * @param position The position of the dialog relative to the target element.
  * @param alignment The alignment of the dialog relative to the target element.
+ * @param duration The duration of the fade in and fade out animation.
+ * @param onDisplayStateChanged: A callback function that is invoked when the display state of the Showcase changes.
  * @param dialog The content of the dialog.
  */
 @Composable
