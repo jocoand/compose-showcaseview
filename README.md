@@ -1,5 +1,5 @@
 <p>
-  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="version">
+  <img src="https://img.shields.io/badge/version-1.1.0-blue.svg" alt="version">
   <img src="https://img.shields.io/badge/platform-android-brightgreen.svg" alt="platform">
 </p>
 
@@ -7,13 +7,15 @@
 A simple showcase library for highlighting components and showing a dialog on it. 
 
 <p>
-  <img src="https://github.com/user-attachments/assets/2e02b2b7-181d-47b0-b95d-b3e37e146785" width="300" alt="preview">
+  <img src="https://github.com/user-attachments/assets/db339610-3818-4d81-b44e-11ae8395df45" width="300" alt="preview">
 </p>
+
+For more pre-configured implementation see [Sequence Showcase](https://github.com/jocoand/compose-showcase?tab=readme-ov-file#-sequence-showcase)
 
 ### Installation
 - Gradle
   ```
-  implementation("io.github.jocoand:compose-showcaseview:1.0.0")
+  implementation("io.github.jocoand:compose-showcaseview:1.1.0")
   ```
 
 ### Usage
@@ -97,11 +99,12 @@ A simple showcase library for highlighting components and showing a dialog on it
   <table>
     <tr>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/b17f8515-3d5a-4236-ae47-18d3f90950e3" width="200">
+        <img src="https://github.com/user-attachments/assets/1e368c82-b301-4c8a-95f2-d76562686d2b" width="200">
       </td>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/149a7987-4c17-49e6-8a02-38f1053b9067" width="200">
+        <img src="https://github.com/user-attachments/assets/d1a791b9-791e-40cd-aac9-6ff0452a7584" width="200">
       </td>
+
     </tr>
     <tr>
       <td align="center">Top</td>
@@ -115,13 +118,13 @@ A simple showcase library for highlighting components and showing a dialog on it
   <table>
     <tr>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/b8b4f44e-e662-48f4-ab1f-9ec1a55190bd" width="200">
+        <img src="https://github.com/user-attachments/assets/bcc803b5-f570-43b7-bbfc-a00c3ae1ec5c" width="200">
       </td>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/06452f70-dfe9-4851-a542-234e35355ecf" width="200">
+        <img src="https://github.com/user-attachments/assets/65695ac9-3fca-4b79-85b6-2d3d30e8d122" width="200">
       </td>
       <td align="center">
-        <img src="https://github.com/user-attachments/assets/9ed60ef7-b696-4019-801e-717c0256ccc9" width="200">
+        <img src="https://github.com/user-attachments/assets/e4e5f045-cf92-4ef0-8570-a9410867ccbc" width="200">
       </td>
     </tr>
     <tr>
@@ -132,6 +135,10 @@ A simple showcase library for highlighting components and showing a dialog on it
   </table>
 
   `Default`: relative to target position
+
+### :beers: Contributing
+- Contribution are welcome!
+  Feel free to open an issue or a pull request, if you find any bugs or have any suggestions.
 
 ### 💡Inspired by
 - https://github.com/SimformSolutionsPvtLtd/SSComposeShowCaseView
