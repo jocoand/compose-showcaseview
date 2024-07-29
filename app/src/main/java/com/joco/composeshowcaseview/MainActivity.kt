@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -44,6 +45,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.composed
 import com.joco.compose_showcaseview.ShowcaseView
+import com.joco.compose_showcaseview.highlight.drawCircularHighlight
 import com.joco.composeshowcaseview.ui.theme.ComposeShowcaseViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -156,8 +158,10 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Like,
                             targetCoordinates = coordinates,
+                            drawHighlight = { drawStarHighlight(coordinates, 5) },
                         ) {
                             MyShowcaseDialog(
+                                modifier = Modifier.offset(y = 32.dp),
                                 text = "Click to Like the article",
                                 onClick = { visibleShowcase = VisibleShowcase.None }
                             )
@@ -168,8 +172,10 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Share,
                             targetCoordinates = coordinates,
+                            drawHighlight = { drawCircularHighlight(coordinates) },
                         ) {
                             MyShowcaseDialog(
+                                modifier = Modifier.offset(y = 32.dp),
                                 text = "Click to Share the article",
                                 onClick = { visibleShowcase = VisibleShowcase.None }
                             )
@@ -244,9 +250,9 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun MyShowcaseDialog(text: String, onClick: () -> Unit) {
+    fun MyShowcaseDialog(modifier: Modifier = Modifier, text: String, onClick: () -> Unit) {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .background(Color.White, shape = RoundedCornerShape(12.dp))
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center,
