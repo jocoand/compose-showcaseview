@@ -11,6 +11,12 @@ import androidx.compose.ui.layout.boundsInParent
 import androidx.compose.ui.layout.boundsInRoot
 import com.joco.compose_showcaseview.highlightPaddingPx
 
+/**
+ * Draws a rounded rectangle highlight around the target element.
+ *
+ * @param coordinates The coordinates of the target element.
+ * @param cornerRadius The corner radius of the rounded rectangle.
+ */
 fun DrawScope.drawRoundedRectHighlight(
     coordinates: LayoutCoordinates,
     cornerRadius: Float

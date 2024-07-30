@@ -9,6 +9,11 @@ import androidx.compose.ui.layout.boundsInParent
 import androidx.compose.ui.layout.boundsInRoot
 import com.joco.compose_showcaseview.highlightPaddingPx
 
+/**
+ * Draws a circular highlight around the target element.
+ *
+ * @param coordinates The coordinates of the target element.
+ */
 fun DrawScope.drawCircularHighlight(
     coordinates: LayoutCoordinates
 ) {
