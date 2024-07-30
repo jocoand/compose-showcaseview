@@ -45,7 +45,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.composed
 import com.joco.compose_showcaseview.ShowcaseView
-import com.joco.compose_showcaseview.highlight.drawCircularHighlight
+import com.joco.compose_showcaseview.highlight.circularHighlight
 import com.joco.composeshowcaseview.ui.theme.ComposeShowcaseViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -172,7 +172,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Share,
                             targetCoordinates = coordinates,
-                            drawHighlight = { drawCircularHighlight(coordinates) },
+                            drawHighlight = { circularHighlight(coordinates) },
                         ) {
                             MyShowcaseDialog(
                                 modifier = Modifier.offset(y = 32.dp),
