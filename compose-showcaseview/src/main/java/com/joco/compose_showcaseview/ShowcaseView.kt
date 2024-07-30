@@ -27,7 +27,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import com.joco.compose_showcaseview.highlight.drawRoundedRectHighlight
+import com.joco.compose_showcaseview.highlight.roundedRectHighlight
 
 /**
  * A Composable function that displays a dialog with a background overlay.
@@ -50,7 +50,7 @@ fun ShowcaseView(
     alignment: ShowcaseAlignment = ShowcaseAlignment.Default,
     duration: ShowcaseDuration = ShowcaseDuration.Default,
     onDisplayStateChanged: (ShowcaseDisplayState) -> Unit = {},
-    drawHighlight: DrawScope.(LayoutCoordinates) -> Unit = { drawRoundedRectHighlight(it, 8.dp.toPx()) },
+    drawHighlight: DrawScope.(LayoutCoordinates) -> Unit = { roundedRectHighlight(it, 8.dp.toPx()) },
     dialog: @Composable () -> Unit
 ) {
     val transition =  remember { MutableTransitionState(false) }
