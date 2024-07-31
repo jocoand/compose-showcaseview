@@ -17,7 +17,7 @@ import com.joco.compose_showcaseview.highlightPaddingPx
  * @param coordinates The coordinates of the target element.
  * @param cornerRadius The corner radius of the rounded rectangle.
  */
-fun DrawScope.roundedRectHighlight(
+internal fun DrawScope.roundedRectHighlight(
     coordinates: LayoutCoordinates,
     cornerRadius: Float
 ) {

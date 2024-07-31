@@ -14,7 +14,7 @@ import com.joco.compose_showcaseview.highlightPaddingPx
  *
  * @param coordinates The coordinates of the target element.
  */
-fun DrawScope.circularHighlight(
+internal fun DrawScope.circularHighlight(
     coordinates: LayoutCoordinates
 ) {
     val targetRect = coordinates.boundsInRoot()

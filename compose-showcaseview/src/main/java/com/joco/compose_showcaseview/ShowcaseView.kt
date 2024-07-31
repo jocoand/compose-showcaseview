@@ -27,7 +27,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import com.joco.compose_showcaseview.highlight.roundedRectHighlight
+import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
 
 /**
  * A Composable function that displays a dialog with a background overlay.
@@ -39,7 +39,7 @@ import com.joco.compose_showcaseview.highlight.roundedRectHighlight
  * @param alignment The alignment of the dialog relative to the target element.
  * @param duration The duration of the fade in and fade out animation.
  * @param onDisplayStateChanged: A callback function that is invoked when the display state of the Showcase changes.
- * @param drawHighlight Draws the highlight around the target element.
+ * @param highlight Draws the highlight around the target element.
  * @param dialog The content of the dialog.
  */
 @Composable
@@ -50,7 +50,7 @@ fun ShowcaseView(
     alignment: ShowcaseAlignment = ShowcaseAlignment.Default,
     duration: ShowcaseDuration = ShowcaseDuration.Default,
     onDisplayStateChanged: (ShowcaseDisplayState) -> Unit = {},
-    drawHighlight: DrawScope.(LayoutCoordinates) -> Unit = { roundedRectHighlight(it, 8.dp.toPx()) },
+    highlight: DrawScope.(LayoutCoordinates) -> Unit = ShowcaseHighlight.roundedRect(),
     dialog: @Composable () -> Unit
 ) {
     val transition =  remember { MutableTransitionState(false) }
@@ -62,7 +62,7 @@ fun ShowcaseView(
         Box {
             ShowcaseBackground(
                 coordinates = targetCoordinates,
-                drawHighlight = { drawHighlight(targetCoordinates) }
+                drawHighlight = highlight
             )
             ShowcaseDialog(
                 targetRect = targetCoordinates.boundsInRoot(),
