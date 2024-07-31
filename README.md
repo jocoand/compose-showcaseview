@@ -1,5 +1,5 @@
 <p>
-  <img src="https://img.shields.io/badge/version-1.2.0-blue.svg" alt="version">
+  <img src="https://img.shields.io/badge/version-1.2.1-blue.svg" alt="version">
   <img src="https://img.shields.io/badge/platform-android-brightgreen.svg" alt="platform">
 </p>
 
@@ -15,7 +15,7 @@ For more pre-configured implementation see [Sequence Showcase](https://github.co
 ### Installation
 - Gradle
   ```
-  implementation("io.github.jocoand:compose-showcaseview:1.2.0")
+  implementation("io.github.jocoand:compose-showcaseview:1.2.1")
   ```
 
 ### Usage
