@@ -31,21 +31,21 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.composed
 import com.joco.compose_showcaseview.ShowcaseView
-import com.joco.compose_showcaseview.highlight.circularHighlight
+import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
 import com.joco.composeshowcaseview.ui.theme.ComposeShowcaseViewTheme
 
 class MainActivity : ComponentActivity() {
@@ -158,7 +158,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Like,
                             targetCoordinates = coordinates,
-                            drawHighlight = { drawStarHighlight(coordinates, 5) },
+                            highlight = ShowcaseHighlight.circular,
                         ) {
                             MyShowcaseDialog(
                                 modifier = Modifier.offset(y = 32.dp),
@@ -172,7 +172,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Share,
                             targetCoordinates = coordinates,
-                            drawHighlight = { circularHighlight(coordinates) },
+                            highlight = ShowcaseHighlight.circular,
                         ) {
                             MyShowcaseDialog(
                                 modifier = Modifier.offset(y = 32.dp),
