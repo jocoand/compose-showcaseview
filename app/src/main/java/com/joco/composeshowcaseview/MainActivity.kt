@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -44,6 +43,8 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.joco.compose_showcaseview.ShowcaseAlignment
+import com.joco.compose_showcaseview.ShowcasePosition
 import com.joco.compose_showcaseview.ShowcaseView
 import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
 import com.joco.composeshowcaseview.ui.theme.ComposeShowcaseViewTheme
@@ -134,6 +135,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Greetings,
                             targetCoordinates = coordinates,
+                            highlight = ShowcaseHighlight.Rectangular(),
                         ) {
                             MyShowcaseDialog(
                                 text = "Hey, this is Greetings showcase",
@@ -146,6 +148,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.ArticleTitle,
                             targetCoordinates = coordinates,
+                            highlight = ShowcaseHighlight.Rectangular(24.dp),
                         ) {
                             MyShowcaseDialog(
                                 text = "Yuhuu!\nYou can read awesome article here",
@@ -158,10 +161,11 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Like,
                             targetCoordinates = coordinates,
-                            highlight = ShowcaseHighlight.circular,
+                            alignment = ShowcaseAlignment.CenterHorizontal,
+                            position = ShowcasePosition.Top,
+                            highlight = ShowcaseHighlight.Circular,
                         ) {
                             MyShowcaseDialog(
-                                modifier = Modifier.offset(y = 32.dp),
                                 text = "Click to Like the article",
                                 onClick = { visibleShowcase = VisibleShowcase.None }
                             )
@@ -172,10 +176,10 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Share,
                             targetCoordinates = coordinates,
-                            highlight = ShowcaseHighlight.circular,
+                            alignment = ShowcaseAlignment.CenterHorizontal,
+                            position = ShowcasePosition.Bottom,
                         ) {
                             MyShowcaseDialog(
-                                modifier = Modifier.offset(y = 32.dp),
                                 text = "Click to Share the article",
                                 onClick = { visibleShowcase = VisibleShowcase.None }
                             )
