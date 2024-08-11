@@ -30,17 +30,16 @@ import androidx.compose.ui.unit.dp
 import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
 
 /**
- * A Composable function that displays a dialog with a background overlay.
- * The dialog and overlay are animated to fade in when visible and fade out when not visible.
- *
- * @param visible Determines if the Showcase is visible or not.
- * @param targetCoordinates The coordinates of the target element that the Showcase is highlighting.
- * @param position The position of the dialog relative to the target element.
- * @param alignment The alignment of the dialog relative to the target element.
- * @param duration The duration of the fade in and fade out animation.
- * @param onDisplayStateChanged: A callback function that is invoked when the display state of the Showcase changes.
- * @param highlight Draws the highlight around the target element.
- * @param dialog The content of the dialog.
+ * Displays a dialog with a background overlay.
+ * *
+ * @param visible determines if the Showcase is visible or not.
+ * @param targetCoordinates the coordinates of the target element that the Showcase is highlighting.
+ * @param position the position of the dialog relative to the target element.
+ * @param alignment the alignment of the dialog relative to the target element.
+ * @param duration the duration of the fade in and fade out animation.
+ * @param onDisplayStateChanged: callback function that is invoked when the display state of the Showcase changes.
+ * @param highlight draws the highlight around the target element.
+ * @param dialog the content of the dialog.
  */
 @Composable
 fun ShowcaseView(
@@ -50,10 +49,12 @@ fun ShowcaseView(
     alignment: ShowcaseAlignment = ShowcaseAlignment.Default,
     duration: ShowcaseDuration = ShowcaseDuration.Default,
     onDisplayStateChanged: (ShowcaseDisplayState) -> Unit = {},
-    highlight: DrawScope.(LayoutCoordinates) -> Unit = ShowcaseHighlight.roundedRect(),
+    highlight: ShowcaseHighlight = ShowcaseHighlight.Rectangular(),
     dialog: @Composable () -> Unit
 ) {
     val transition =  remember { MutableTransitionState(false) }
+    val highlightDrawer = highlight.create(targetCoordinates = targetCoordinates)
+
     AnimatedVisibility(
         visibleState = transition,
         enter = fadeIn(tween(duration.enterMillis)),
@@ -62,12 +63,13 @@ fun ShowcaseView(
         Box {
             ShowcaseBackground(
                 coordinates = targetCoordinates,
-                drawHighlight = highlight
+                drawHighlight = highlightDrawer.drawHighlight
             )
             ShowcaseDialog(
                 targetRect = targetCoordinates.boundsInRoot(),
                 position = position,
                 alignment = alignment,
+                highlightBounds = highlightDrawer.highlightBounds,
                 content = dialog
             )
         }
@@ -87,9 +89,9 @@ fun ShowcaseView(
 }
 
 /**
- * A Composable function that draws the background overlay and the highlight around the target element.
+ * Draws the background overlay and the highlight around the target element.
  *
- * @param coordinates The coordinates of the target element that the Showcase is highlighting.
+ * @param coordinates the coordinates of the target element that the Showcase is highlighting.
  * @param drawHighlight draws the highlight around the target element.
  */
 @Composable
@@ -114,57 +116,62 @@ private fun ShowcaseBackground(
 /**
  * A Composable function that positions and displays the dialog.
  *
- * @param targetRect The bounding rectangle of the target element.
- * @param position The position of the dialog relative to the target element.
- * @param alignment The alignment of the dialog relative to the target element.
- * @param content The content of the dialog.
+ * @param targetRect te bounding rectangle of the target element.
+ * @param position the position of the dialog relative to the target element.
+ * @param alignment the alignment of the dialog relative to the target element.
+ * @param content the content of the dialog.
  */
 @Composable
 private fun ShowcaseDialog(
     targetRect: Rect,
     position: ShowcasePosition,
     alignment: ShowcaseAlignment,
+    highlightBounds: Rect,
     content: @Composable () -> Unit
 ) {
     var offsetX by remember { mutableFloatStateOf(0f) }
     var offsetY by remember { mutableFloatStateOf(0f) }
     val configuration = LocalConfiguration.current
+    val density = LocalDensity.current
 
-    val screenHeight = with(LocalDensity.current) {
+    val screenHeight = with(density) {
         configuration.screenHeightDp.dp.toPx()
     }
-    val screenWidth = with(LocalDensity.current) {
+    val screenWidth = with(density) {
         configuration.screenWidthDp.dp.toPx()
     }
+
+    val verticalSpacerPx = with(density) { 16.dp.toPx() }
+
     Box(
         modifier = Modifier
             .offset(x = offsetX.toDp(), y = offsetY.toDp())
             .onGloballyPositioned {
-                val contentHeight = it.size.height
-                val contentWidth = it.size.width
-                val extraSpacePx = 20 + highlightPaddingPx
+                val dialogHeight = it.size.height
+                val dialogWidth = it.size.width
+                val highlightCenterX = highlightBounds.center.x
 
                 offsetX = when (alignment) {
-                    ShowcaseAlignment.Start -> targetRect.left - highlightPaddingPx
-                    ShowcaseAlignment.End -> targetRect.right - contentWidth + highlightPaddingPx
-                    ShowcaseAlignment.CenterHorizontal -> (targetRect.center.x - contentWidth / 2) - (highlightPaddingPx / 2)
+                    ShowcaseAlignment.Start -> highlightBounds.left
+                    ShowcaseAlignment.End -> highlightBounds.right - dialogWidth
+                    ShowcaseAlignment.CenterHorizontal -> (highlightCenterX - dialogWidth / 2)
                     ShowcaseAlignment.Default -> {
-                        if (targetRect.center.x > screenWidth / 2 + extraSpacePx) {
-                            targetRect.right - contentWidth + highlightPaddingPx
+                        if (highlightCenterX > screenWidth / 2) {
+                            highlightBounds.right - dialogWidth
                         } else {
-                            targetRect.left - highlightPaddingPx
+                            highlightBounds.left
                         }
                     }
                 }
 
                 offsetY = when (position) {
-                    ShowcasePosition.Top -> targetRect.top - contentHeight - extraSpacePx
-                    ShowcasePosition.Bottom -> targetRect.bottom + extraSpacePx
+                    ShowcasePosition.Top -> highlightBounds.top - verticalSpacerPx - dialogHeight
+                    ShowcasePosition.Bottom -> highlightBounds.bottom + verticalSpacerPx
                     ShowcasePosition.Default -> {
-                        if (targetRect.center.y > screenHeight / 2 + extraSpacePx) {
-                            targetRect.top - contentHeight - extraSpacePx
+                        if (targetRect.center.y > screenHeight / 2 + verticalSpacerPx) {
+                            highlightBounds.top - verticalSpacerPx - dialogHeight
                         } else {
-                            targetRect.bottom + extraSpacePx
+                            highlightBounds.bottom + verticalSpacerPx
                         }
                     }
                 }
