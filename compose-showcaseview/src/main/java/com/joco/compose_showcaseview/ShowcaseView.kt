@@ -38,7 +38,7 @@ import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
  * @param alignment the alignment of the dialog relative to the target element.
  * @param duration the duration of the fade in and fade out animation.
  * @param onDisplayStateChanged: callback function that is invoked when the display state of the Showcase changes.
- * @param highlight draws the highlight around the target element.
+ * @param highlight the highlight around the target element.
  * @param dialog the content of the dialog.
  */
 @Composable
@@ -119,6 +119,7 @@ private fun ShowcaseBackground(
  * @param targetRect te bounding rectangle of the target element.
  * @param position the position of the dialog relative to the target element.
  * @param alignment the alignment of the dialog relative to the target element.
+ * @param highlightBounds the bounding rectangle of the highlight.
  * @param content the content of the dialog.
  */
 @Composable

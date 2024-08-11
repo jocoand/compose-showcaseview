@@ -5,9 +5,10 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.LayoutCoordinates
 
 /**
- * Represents the highlight around the target element in the `ShowcaseView`.
+ * Represents the highlight around the target element.
  *
  * @property drawHighlight A lambda function that draws the highlight around the target element.
+ * @property highlightBounds The bounds of the highlight around the target element.
  */
 class HighlightProperties internal constructor(
     val drawHighlight: DrawScope.(LayoutCoordinates) -> Unit,

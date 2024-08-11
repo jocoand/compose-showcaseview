@@ -15,16 +15,18 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 sealed interface ShowcaseHighlight {
+    /**
+     * Create a HighlightProperties object which contains the details of the highlight.
+     */
     @Composable
     fun create(targetCoordinates: LayoutCoordinates): HighlightProperties
 
+    /**
+     * Class to create a rectangular highlight around the target element.
+     * @property cornerRadius The corner radius of the rounded rectangle.
+     */
     data class Rectangular(val cornerRadius: Dp = 8.dp) : ShowcaseHighlight {
-        /**
-         * Creates a rectangular highlight.
-         *
-         * @param cornerRadius The corner radius of the rectangular highlight.
-         * @return A ShowcaseHighlight of type Rect.
-         */
+
         @Composable
         override fun create(
             targetCoordinates: LayoutCoordinates
@@ -42,8 +44,8 @@ sealed interface ShowcaseHighlight {
         /**
          * Draws a rounded rectangle highlight around the target element.
          *
-         * @param coordinates The coordinates of the target element.
          * @param cornerRadius The corner radius of the rounded rectangle.
+         * @param highlightBounds The bounds of the highlight around the target element.
          */
         private fun DrawScope.rectangularHighlight(
             cornerRadius: Float,
@@ -71,12 +73,11 @@ sealed interface ShowcaseHighlight {
         }
     }
 
+    /**
+     * Data object is used to create a circular highlight around the target element.
+     */
     data object Circular : ShowcaseHighlight {
-        /**
-         * Creates a circular highlight.
-         *
-         * @return A ShowcaseHighlight of type Circular.
-         */
+
         @Composable
         override fun create(targetCoordinates: LayoutCoordinates): HighlightProperties {
             val targetMargin = with(LocalDensity.current) { 12.dp.toPx() }
@@ -93,6 +94,7 @@ sealed interface ShowcaseHighlight {
          * Draws a circular highlight around the target element.
          *
          * @param coordinates The coordinates of the target element.
+         * @param targetMargin The margin around the target element.
          */
         private fun DrawScope.circularHighlight(
             coordinates: LayoutCoordinates,
