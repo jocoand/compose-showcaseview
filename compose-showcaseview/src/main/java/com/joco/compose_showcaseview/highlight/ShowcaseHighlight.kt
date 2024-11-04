@@ -76,11 +76,11 @@ sealed interface ShowcaseHighlight {
     /**
      * Data object is used to create a circular highlight around the target element.
      */
-    data object Circular : ShowcaseHighlight {
+    data class Circular(val targetMargin: Dp = 4.dp) : ShowcaseHighlight {
 
         @Composable
         override fun create(targetCoordinates: LayoutCoordinates): HighlightProperties {
-            val targetMargin = with(LocalDensity.current) { 12.dp.toPx() }
+            val targetMargin = with(LocalDensity.current) { targetMargin.toPx() }
             return HighlightProperties(
                 drawHighlight = { circularHighlight(it, targetMargin) },
                 highlightBounds = createHighlightBounds(
