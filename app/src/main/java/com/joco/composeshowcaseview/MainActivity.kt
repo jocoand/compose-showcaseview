@@ -163,7 +163,7 @@ class MainActivity : ComponentActivity() {
                             targetCoordinates = coordinates,
                             alignment = ShowcaseAlignment.CenterHorizontal,
                             position = ShowcasePosition.Top,
-                            highlight = ShowcaseHighlight.Circular,
+                            highlight = ShowcaseHighlight.Circular(targetMargin = 12.dp),
                         ) {
                             MyShowcaseDialog(
                                 text = "Click to Like the article",
@@ -177,7 +177,7 @@ class MainActivity : ComponentActivity() {
                             visible = visibleShowcase == VisibleShowcase.Share,
                             targetCoordinates = coordinates,
                             alignment = ShowcaseAlignment.CenterHorizontal,
-                            position = ShowcasePosition.Bottom,
+                            position = ShowcasePosition.Top,
                         ) {
                             MyShowcaseDialog(
                                 text = "Click to Share the article",
