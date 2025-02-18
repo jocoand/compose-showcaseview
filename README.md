@@ -4,13 +4,13 @@
 </p>
 
 ## 🌟 Compose Showcase View
-A simple showcase library for highlighting components and showing a dialog on it. 
+A simple showcase library for highlighting components and showing a dialog on it.
+
+<i>See [Sequence Showcase](https://github.com/jocoand/compose-showcase?tab=readme-ov-file#-sequence-showcase) for more pre-configured implementation </i>
 
 <p>
   <img src="https://github.com/user-attachments/assets/db339610-3818-4d81-b44e-11ae8395df45" width="300" alt="preview">
 </p>
-
-For more pre-configured implementation see [Sequence Showcase](https://github.com/jocoand/compose-showcase?tab=readme-ov-file#-sequence-showcase)
 
 ### Installation
 - Gradle
@@ -41,7 +41,7 @@ For more pre-configured implementation see [Sequence Showcase](https://github.co
         }
     }
   ```
-  
+
 - Get your target component `LayoutCoordinates` using `onGloballyPositioned` modifier
 - ```
   val targets = remember { mutableStateMapOf<String, LayoutCoordinates>() }
