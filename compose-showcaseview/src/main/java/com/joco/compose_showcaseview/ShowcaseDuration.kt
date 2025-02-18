@@ -8,6 +8,8 @@ package com.joco.compose_showcaseview
  */
 class ShowcaseDuration(val enterMillis: Int, val exitMillis: Int) {
     companion object {
-        val Default = ShowcaseDuration(700, 700)
+        private const val DEFAULT_MILLIS = 700
+
+        val Default = ShowcaseDuration(DEFAULT_MILLIS, DEFAULT_MILLIS)
     }
 }
