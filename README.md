@@ -3,10 +3,10 @@
   <img src="https://img.shields.io/badge/platform-android-brightgreen.svg" alt="platform">
 </p>
 
-## 🌟 Compose Showcase View
+## 🌀 Compose Showcase View
 A simple showcase library for highlighting components and showing a dialog on it.
 
-<i>See [Sequence Showcase](https://github.com/jocoand/compose-showcase?tab=readme-ov-file#-sequence-showcase) for more pre-configured implementation </i>
+For more <i>pre-configured implementation</i> see [Sequence Showcase](https://github.com/jocoand/compose-showcase?tab=readme-ov-file#-sequence-showcase)  🚀
 
 <p>
   <img src="https://github.com/user-attachments/assets/db339610-3818-4d81-b44e-11ae8395df45" width="300" alt="preview">
