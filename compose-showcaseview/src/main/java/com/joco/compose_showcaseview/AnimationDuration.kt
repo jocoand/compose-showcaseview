@@ -12,19 +12,19 @@ class AnimationDuration private constructor(val enterMillis: Int, val exitMillis
         private const val DEFAULT_MILLIS = 700
 
         /**
-         * Creates a `ShowcaseDuration` with the default duration for both enter and exit animations.
+         * Creates a `AnimationDuration` with the default duration for both enter and exit animations.
          */
         val Default = AnimationDuration(DEFAULT_MILLIS, DEFAULT_MILLIS)
 
         /**
-         * Creates a `ShowcaseDuration` with the same duration for both enter and exit animations.
+         * Creates a `AnimationDuration` with the same duration for both enter and exit animations.
          *
          * @param durationMillis Animations duration in milliseconds.
          */
         fun create(durationMillis: Int) = AnimationDuration(durationMillis, durationMillis)
 
         /**
-         * Creates a `ShowcaseDuration` with different durations for enter and exit animations.
+         * Creates a `AnimationDuration` with different durations for enter and exit animations.
          *
          * @param enterMillis The enter animation duration in milliseconds.
          * @param exitMillis The exit animation duration in milliseconds.
