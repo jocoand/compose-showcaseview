@@ -36,7 +36,7 @@ import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
  * @param targetCoordinates the coordinates of the target element that the Showcase is highlighting.
  * @param position the position of the dialog relative to the target element.
  * @param alignment the alignment of the dialog relative to the target element.
- * @param duration the duration of the fade in and fade out animation.
+ * @param animationDuration the duration of the fade in and fade out animation.
  * @param onDisplayStateChanged: callback function that is invoked when the display state of the Showcase changes.
  * @param highlight the highlight around the target element.
  * @param dialog the content of the dialog.
@@ -47,7 +47,7 @@ fun ShowcaseView(
     targetCoordinates: LayoutCoordinates,
     position: ShowcasePosition = ShowcasePosition.Default,
     alignment: ShowcaseAlignment = ShowcaseAlignment.Default,
-    duration: ShowcaseDuration = ShowcaseDuration.Default,
+    animationDuration: AnimationDuration = AnimationDuration.Default,
     onDisplayStateChanged: (ShowcaseDisplayState) -> Unit = {},
     highlight: ShowcaseHighlight = ShowcaseHighlight.Rectangular(),
     dialog: @Composable () -> Unit
@@ -57,8 +57,8 @@ fun ShowcaseView(
 
     AnimatedVisibility(
         visibleState = transition,
-        enter = fadeIn(tween(duration.enterMillis)),
-        exit = fadeOut(tween(duration.exitMillis))
+        enter = fadeIn(tween(animationDuration.enterMillis)),
+        exit = fadeOut(tween(animationDuration.exitMillis))
     ) {
         Box {
             ShowcaseBackground(
