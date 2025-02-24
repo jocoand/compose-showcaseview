@@ -44,6 +44,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.joco.compose_showcaseview.ShowcaseAlignment
+import com.joco.compose_showcaseview.AnimationDuration
 import com.joco.compose_showcaseview.ShowcasePosition
 import com.joco.compose_showcaseview.ShowcaseView
 import com.joco.compose_showcaseview.highlight.ShowcaseHighlight
@@ -148,6 +149,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.ArticleTitle,
                             targetCoordinates = coordinates,
+                            animationDuration = AnimationDuration.Default,
                             highlight = ShowcaseHighlight.Rectangular(24.dp),
                         ) {
                             MyShowcaseDialog(
@@ -161,6 +163,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Like,
                             targetCoordinates = coordinates,
+                            animationDuration = AnimationDuration.create(300),
                             alignment = ShowcaseAlignment.CenterHorizontal,
                             position = ShowcasePosition.Top,
                             highlight = ShowcaseHighlight.Circular(targetMargin = 12.dp),
@@ -176,6 +179,7 @@ class MainActivity : ComponentActivity() {
                         ShowcaseView(
                             visible = visibleShowcase == VisibleShowcase.Share,
                             targetCoordinates = coordinates,
+                            animationDuration = AnimationDuration.create(500, 500),
                             alignment = ShowcaseAlignment.CenterHorizontal,
                             position = ShowcasePosition.Top,
                         ) {
