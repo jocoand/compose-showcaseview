@@ -1,6 +1,7 @@
 <p>
-  <img src="https://img.shields.io/badge/version-1.3.1-blue.svg" alt="version">
+  <img src="https://img.shields.io/badge/mavenCentral-1.4.0-blue.svg" alt="version">
   <img src="https://img.shields.io/badge/platform-android-brightgreen.svg" alt="platform">
+  
 </p>
 
 ## 🌀 Compose Showcase View
@@ -15,7 +16,7 @@ For more <i>pre-configured implementation</i> see [Sequence Showcase](https://gi
 ### Installation
 - Gradle
   ```
-  implementation("io.github.jocoand:compose-showcaseview:1.3.1")
+  implementation("io.github.jocoand:compose-showcaseview:1.4.0")
   ```
 
 ### Usage
@@ -42,13 +43,13 @@ For more <i>pre-configured implementation</i> see [Sequence Showcase](https://gi
     }
   ```
 
-- Get your target component `LayoutCoordinates` using `onGloballyPositioned` modifier
+- Mark your target component (view to be highlighted) `LayoutCoordinates` using `onGloballyPositioned` modifier
 - ```
   val targets = remember { mutableStateMapOf<String, LayoutCoordinates>() }
   var greetingShowcaseVisible by remember { mutableStateOf(false) }
   
   ...
-  // Target component to be highlighted
+  // Target component (view to be highlighted)
   Greeting(
       modifier = Modifier
           .align(Alignment.End)
@@ -74,7 +75,7 @@ For more <i>pre-configured implementation</i> see [Sequence Showcase](https://gi
       }
   }
   ```
-  You may want to put you ShowcaseView in your top most componenent to make the overlay cover the whole screen
+  You may want to put you `ShowcaseView` in your top most componenent to make the overlay cover the whole screen
   ```
     Box(modifier = Modifier.fillMaxSize()) {
       Scaffold(
@@ -135,6 +136,8 @@ For more <i>pre-configured implementation</i> see [Sequence Showcase](https://gi
   </table>
 
   `Default`: relative to target position
+  
+  `animationDuration`: duration of the enter and exit animation.
 
 ### :beers: Contributing
 - Contribution are welcome!
